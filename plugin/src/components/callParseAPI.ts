@@ -22,13 +22,15 @@ export async function callAPI(buffer: string): Promise<Highlight[]> {
 
         // finalize once the endpoints are done
         const url = "https://3.17.139.205:8000/parse";
+        const sanitizedBuffer = buffer.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        
         const agentResponse = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                codetext: buffer,
+                request: sanitizedBuffer,
             })
         });
 
