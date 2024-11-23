@@ -1,46 +1,39 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-    // Register a command that can be triggered from the command palette
-    let disposable = vscode.commands.registerCommand('myextension.modifyCode', () => {
-        // Get the active text editor
-        const editor = vscode.window.activeTextEditor;
-        if (!editor) {
-            vscode.window.showInformationMessage('No editor is active');
-            return;
-        }
+	console.log('Congratulations, your extension "sample-date-inserter" is now active!');
 
-        // Read the current document text
-        const document = editor.document;
-        const text = document.getText();
+	let insertDateTimeDisposable = vscode.commands.registerCommand('sample-date-inserter.insertDateTime', () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const currentDateTime = new Date().toLocaleString();
+			editor.edit(editBuilder => {
+				editBuilder.insert(editor.selection.active, currentDateTime);
+			}).then(success => {
+				if (success) {
+					vscode.window.showInformationMessage(`Inserted date and time: ${currentDateTime}`);
+				} else {
+					vscode.window.showErrorMessage('Failed to insert date and time');
+				}
+			});
+		} else {
+			vscode.window.showErrorMessage('No active editor found');
+		}
+	});
 
-        // Create a decoration type for highlighting
-        const highlightDecorationType = vscode.window.createTextEditorDecorationType({
-            backgroundColor: 'rgba(255, 255, 0, 0.2)',
-            border: '1px solid yellow'
-        });
+	let printFirstTenCharsDisposable = vscode.commands.registerCommand('sample-date-inserter.printFirstTenChars', () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const document = editor.document;
+			const firstTenChars = document.getText().slice(0, 10);
+			vscode.window.showInformationMessage(`First 10 characters: ${firstTenChars}`);
+		} else {
+			vscode.window.showErrorMessage('No active editor found');
+		}
+	});
 
-        // Example: Highlight a specific range
-        const range = new vscode.Range(
-            new vscode.Position(0, 0),
-            new vscode.Position(0, 10)
-        );
-        editor.setDecorations(highlightDecorationType, [range]);
-
-        // Example: Modify text
-        editor.edit(editBuilder => {
-            // Replace the entire text (you can modify this to target specific ranges)
-            editBuilder.replace(
-                new vscode.Range(
-                    document.positionAt(0),
-                    document.positionAt(text.length)
-                ),
-                'Modified text'
-            );
-        });
-    });
-
-    context.subscriptions.push(disposable);
+	context.subscriptions.push(insertDateTimeDisposable, printFirstTenCharsDisposable);
 }
 
-export function deactivate() {} 
+export function deactivate() {}
+

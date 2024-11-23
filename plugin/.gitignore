@@ -1,6 +1,5 @@
-# ignore node_modules
-node_modules/
-# ignore .env
-.env
-# ignore venv/
-venv/
+out
+dist
+node_modules
+.vscode-test/
+*.vsix

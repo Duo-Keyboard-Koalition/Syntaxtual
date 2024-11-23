@@ -1,6 +1,6 @@
-# dkk-coding-agent README
+# sample-date-inserter README
 
-This is the README for your extension "dkk-coding-agent". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "sample-date-inserter". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
