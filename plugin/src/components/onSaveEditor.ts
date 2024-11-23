@@ -29,7 +29,9 @@ export async function onSaveEditor(context: vscode.ExtensionContext) {
         const dialogueBox = new DialogueBox(context, highlight, text);
         dialogueBox.show();
     });
-    
 
-
+    // Create a terminal and show the "File saved" comment
+    const terminal = vscode.window.createTerminal('File Save Terminal');
+    // terminal.show();
+    terminal.sendText('echo "File saved"');
 }

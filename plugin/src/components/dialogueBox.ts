@@ -10,15 +10,13 @@ export class Highlight {
 }
 
 export class DialogueBox {
-    private panel: vscode.WebviewPanel | undefined;
-
     constructor(
         private context: vscode.ExtensionContext,
         private highlight: Highlight,
         private text: string
     ) {}
 
-    public show() {
+    public async show() {
         const editor = vscode.window.activeTextEditor;
 
         if (!editor) {
@@ -28,28 +26,14 @@ export class DialogueBox {
 
         this.highlightText(editor);
 
-        this.panel = vscode.window.createWebviewPanel(
-            'dialogueBox',
-            'Dialogue Box',
-            vscode.ViewColumn.One,
-            {
-                enableScripts: true
-            }
-        );
+        const input = await vscode.window.showInputBox({
+            prompt: this.text,
+            placeHolder: 'Enter your input'
+        });
 
-        this.panel.webview.html = this.getWebviewContent(this.text);
-
-        this.panel.webview.onDidReceiveMessage(
-            async message => {
-                switch (message.command) {
-                    case 'send':
-                        vscode.window.showInformationMessage(`Input received: ${message.text}`);
-                        return;
-                }
-            },
-            undefined,
-            this.context.subscriptions
-        );
+        if (input !== undefined) {
+            vscode.window.showInformationMessage(`Input received: ${input}`);
+        }
     }
 
     private highlightText(editor: vscode.TextEditor) {
@@ -63,33 +47,5 @@ export class DialogueBox {
         });
 
         editor.setDecorations(decorationType, [{ range }]);
-    }
-
-    private getWebviewContent(text: string): string {
-        return `
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Dialogue Box</title>
-            </head>
-            <body>
-                <h1>${text}</h1>
-                <textarea id="input" rows="4" cols="50"></textarea><br>
-                <button onclick="sendMessage()">Send</button>
-                <script>
-                    const vscode = acquireVsCodeApi();
-                    function sendMessage() {
-                        const input = document.getElementById('input').value;
-                        vscode.postMessage({
-                            command: 'send',
-                            text: input
-                        });
-                    }
-                </script>
-            </body>
-            </html>
-        `;
     }
 }
