@@ -1,2 +1,5 @@
 .venv
 .env
+rsa.pem
+env
+__pycache__
