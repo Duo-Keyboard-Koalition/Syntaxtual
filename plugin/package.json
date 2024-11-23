@@ -1,8 +1,8 @@
 {
 	"name": "sample-date-inserter",
 	"displayName": "Sample Date Inserter",
-	"description": "Insert current date and time and print first 10 characters of the file",
-	"version": "0.0.4",
+	"description": "Insert current date and time, print first 10 characters of the file, and simulate API calls",
+	"version": "0.0.5",
 	"engines": {
 		"vscode": "^1.85.0"
 	},
@@ -20,6 +20,27 @@
 			{
 				"command": "sample-date-inserter.printFirstTenChars",
 				"title": "Print First 10 Characters"
+			},
+			{
+				"command": "sample-date-inserter.simulateApiCall",
+				"title": "Simulate API Call"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "sample-date-inserter.insertDateTime",
+				"key": "ctrl+shift+i",
+				"mac": "cmd+shift+i"
+			},
+			{
+				"command": "sample-date-inserter.printFirstTenChars",
+				"key": "ctrl+shift+p",
+				"mac": "cmd+shift+p"
+			},
+			{
+				"command": "sample-date-inserter.simulateApiCall",
+				"key": "ctrl+shift+a",
+				"mac": "cmd+shift+a"
 			}
 		]
 	},
