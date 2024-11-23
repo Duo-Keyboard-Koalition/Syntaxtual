@@ -1,0 +1,126 @@
+{
+  "file_description": {
+    "summary": "This file contains:",
+    "components": [
+      "A Calculator class for A Calculator class with properties implementing __init__, version, add",
+      "A global variable API_VERSION",
+      "A global variable DEBUG_MODE",
+      "A function __init__ that Initialize calculator with given precision.",
+      "A function version that Get calculator version.",
+      "A function add that Creates data in the system",
+      "A global variable results",
+      "A global variable result",
+      "A global variable chunk"
+    ]
+  },
+  "classes": [
+    {
+      "name": "Calculator",
+      "responsibility": "A Calculator class with properties implementing __init__, version, add",
+      "docstring": "A simple calculator class.",
+      "methods": [
+        {
+          "name": "__init__",
+          "purpose": "Initialize calculator with given precision.",
+          "signature": "__init__(self, precision: int)",
+          "docstring": "Initialize calculator with given precision.",
+          "body": "  \"\"\"Initialize calculator with given precision.\"\"\"\n  self.precision = precision",
+          "decorators": "",
+          "return_type": "None",
+          "is_method": true,
+          "class_name": "Calculator"
+        },
+        {
+          "name": "version",
+          "purpose": "Get calculator version.",
+          "signature": "version(self)",
+          "docstring": "Get calculator version.",
+          "body": "  \"\"\"Get calculator version.\"\"\"\n  return \"1.0\"",
+          "decorators": "@property",
+          "return_type": "str",
+          "is_method": true,
+          "class_name": "Calculator"
+        },
+        {
+          "name": "add",
+          "purpose": "Creates data in the system",
+          "signature": "add(self, a: float, b: float)",
+          "docstring": "Add two numbers.",
+          "body": "  \"\"\"Add two numbers.\"\"\"\n  result = a + b\n  return round(result, self.precision)",
+          "decorators": "",
+          "return_type": "float",
+          "is_method": true,
+          "class_name": "Calculator"
+        }
+      ],
+      "inheritance": "",
+      "decorators": "@dataclass"
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "purpose": "Initialize calculator with given precision.",
+      "signature": "__init__(self, precision: int)",
+      "docstring": "Initialize calculator with given precision.",
+      "body": "  \"\"\"Initialize calculator with given precision.\"\"\"\n  self.precision = precision",
+      "decorators": "",
+      "return_type": "None",
+      "is_method": false,
+      "class_name": null
+    },
+    {
+      "name": "version",
+      "purpose": "Get calculator version.",
+      "signature": "version(self)",
+      "docstring": "Get calculator version.",
+      "body": "  \"\"\"Get calculator version.\"\"\"\n  return \"1.0\"",
+      "decorators": "@property",
+      "return_type": "str",
+      "is_method": false,
+      "class_name": null
+    },
+    {
+      "name": "add",
+      "purpose": "Creates data in the system",
+      "signature": "add(self, a: float, b: float)",
+      "docstring": "Add two numbers.",
+      "body": "  \"\"\"Add two numbers.\"\"\"\n  result = a + b\n  return round(result, self.precision)",
+      "decorators": "",
+      "return_type": "float",
+      "is_method": false,
+      "class_name": null
+    }
+  ],
+  "variables": [
+    {
+      "name": "API_VERSION",
+      "value": "'1.0'",
+      "purpose": "Global API_VERSION set to '1.0'"
+    },
+    {
+      "name": "DEBUG_MODE",
+      "value": "True",
+      "purpose": "Global DEBUG_MODE set to True"
+    },
+    {
+      "name": "results",
+      "value": "[]",
+      "purpose": "Global results set to []"
+    },
+    {
+      "name": "result",
+      "value": "a + b",
+      "purpose": "Global result set to a + b"
+    },
+    {
+      "name": "chunk",
+      "value": "items[i:i + chunk_size]",
+      "purpose": "Global chunk set to items[i:i + chunk_size]"
+    }
+  ],
+  "relationships": [
+    "Class Calculator contains methods: __init__, version, add",
+    "Function add uses global variables: result"
+  ]
+}
