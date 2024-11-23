@@ -1,14 +1,12 @@
 import * as vscode from 'vscode';
 
-interface Highlight {
-    lineNumber: number;
-    startColumn: number;
-    endColumn: number;
-    highlightColor: string;
+interface AgentResponse {
+  [lineNumber: number]: string;
 }
 
-interface AgentResponse {
-    highlights: Highlight[];
+interface Highlight {
+  lineNumber: number;
+  text: string;  // Changed from 'content' to 'text'
 }
 
 export async function callAPI(buffer: string): Promise<Highlight[]> {
@@ -23,14 +21,14 @@ export async function callAPI(buffer: string): Promise<Highlight[]> {
         vscode.window.showInformationMessage('API call simulated: File saved');
 
         // finalize once the endpoints are done
-        const url = "TBD";
+        const url = "https://3.17.139.205:8000/parse";
         const agentResponse = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                code: buffer,
+                codetext: buffer,
             })
         });
 
@@ -39,7 +37,12 @@ export async function callAPI(buffer: string): Promise<Highlight[]> {
         }
         const response = await agentResponse.json() as AgentResponse;
 
-        return response.highlights;
+        const highlights = Object.entries(response).map(([line, content]) => ({
+          lineNumber: parseInt(line),
+          text: content  // Changed from 'content' to 'text'
+        }));
+
+        return highlights;
     } catch (error) {
         vscode.window.showErrorMessage(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
         return [];

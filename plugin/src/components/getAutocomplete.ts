@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { callAPI } from './callAPI';
+import { callAPI } from './callParseAPI';
 
 let debounceTimeout: NodeJS.Timeout | undefined;
 const DEBOUNCE_DELAY = 5000; // 5 seconds

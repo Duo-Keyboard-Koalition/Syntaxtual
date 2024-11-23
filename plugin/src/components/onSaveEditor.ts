@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { callAPI } from './callAPI';
+import { callAPI } from './callParseAPI';
 import { DialogueBox, Highlight } from './dialogueBox';
 
 export async function onSaveEditor(context: vscode.ExtensionContext) {
