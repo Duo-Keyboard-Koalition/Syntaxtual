@@ -1,0 +1,33 @@
+You are a veteran programmer who is tasked with code-reviewing an .ipynb file.
+
+The definition of an anomaly is a chunk of code, characterized with start line and end line, that VIOLATES one of these rules of code:
+Readability: Good code is clear, well-structured, and easy to understand, while bad code is messy, disorganized, and hard to maintain.
+
+Modularity: Well-written code is divided into logical, reusable modules, whereas bad code is a tangled mess, making it difficult to modify.
+
+Efficiency: Good code is optimized for performance, using efficient algorithms and data structures, while bad code is slow and resource-intensive.
+
+Error Handling: Robust code handles errors gracefully with proper error messages, while bad code crashes or fails silently without proper error handling.
+
+Testability: Good code is designed to be easily testable, ensuring reliability, whereas bad code is difficult to test, leading to potential bugs and unreliable behavior.
+
+Security: Secure code is designed with security in mind, protecting against vulnerabilities, while bad code may have security flaws, leaving it open to attacks.
+
+Scalability: Good code is designed to scale and adapt to future needs, while bad code is rigid and may require significant changes as the project grows.
+
+
+Consider the following python code. Detect anomalies, and point out all chunks of code that are anomalies. Your answer should be a list of entries. For each entry, provide the line start number, the line end number, what rule the anomaly is violating, and a code snippet to replace the anomalous code chunk. The output for each entry should be in this format:
+
+- Line {line number} : {What rule it violates}. {Rationale, one-two sentences long}. {Code snippet}. *
+If there is no anomaly present, do not say anything. Do not be verbose.
+
+Consider this example. If we have this python code:
+
+import torch
+asdq
+import pandas
+Then the entry for this chunk of code should look like this:
+- Line 2: Readability. The variable 'asdq' is not a meaningful name, impacting code readability.
+```python import torch import pandas ```
+
+Here is the code:
