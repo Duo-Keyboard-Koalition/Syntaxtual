@@ -7,7 +7,7 @@ export function onUpdateEvent() {
         clearTimeout(fileChangeTimeout);
     }
     fileChangeTimeout = setTimeout(() => {
-        vscode.commands.executeCommand('sample-date-inserter.getCodeReview');
+        vscode.commands.executeCommand('syntaxtual.getCodeReview');
     }, 1000); // Debounce for 1 second
 }
 

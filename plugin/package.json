@@ -1,5 +1,5 @@
 {
-    "name": "sample-date-inserter",
+    "name": "syntaxtual",
     "displayName": "Sample Date Inserter",
     "description": "Insert current date and time, print first 10 characters of the file, and simulate API calls",
     "version": "0.0.5",
@@ -10,48 +10,57 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:sample-date-inserter.highlight"
+        "onCommand:syntaxtual.highlight"
     ],
     "main": "./out/extension.js",
     "contributes": {
         "commands": [
             {
-                "command": "sample-date-inserter.insertDateTime",
+                "command": "syntaxtual.insertDateTime",
                 "title": "Insert Date and Time"
             },
             {
-                "command": "sample-date-inserter.getEditorContent",
+                "command": "syntaxtual.getEditorContent",
                 "title": "Print First 10 Characters"
             },
             {
-                "command": "sample-date-inserter.getCodeReview",
+                "command": "syntaxtual.getCodeReview",
                 "title": "Simulate API Call"
             },
             {
-                "command": "sample-date-inserter.highlight",
-                "title": "Highlight First 10 Characters"
-            }
+                "command": "syntaxtual.highlight",
+                "title": "highlight10"
+            },
+			{
+				"command": "syntaxtual.onSaveEditor",
+				"title": "on-save"
+			}
         ],
         "keybindings": [
             {
-                "command": "sample-date-inserter.insertDateTime",
+                "command": "syntaxtual.insertDateTime",
                 "key": "ctrl+shift+i",
                 "mac": "cmd+shift+i"
             },
             {
-                "command": "sample-date-inserter.getEditorContent",
+                "command": "syntaxtual.getEditorContent",
                 "key": "ctrl+shift+p",
                 "mac": "cmd+shift+p"
             },
             {
-                "command": "sample-date-inserter.getCodeReview",
+                "command": "syntaxtual.getCodeReview",
                 "key": "ctrl+shift+a",
                 "mac": "cmd+shift+a"
             },
             {
-                "command": "sample-date-inserter.highlight",
+                "command": "syntaxtual.highlight",
                 "key": "ctrl+shift+h",
                 "mac": "cmd+shift+h"
+            },
+            {
+                "command": "syntaxtual.onSaveEditor",
+                "key": "ctrl+s",
+                "mac": "cmd+s"
             }
         ]
     },
