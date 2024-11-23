@@ -1,0 +1,49 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "spellcheck"
+    ],
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "double"],
+        "no-unused-vars": "warn",
+        "no-console": "warn",
+        "spellcheck/spell-checker": [
+            "warn",
+            {
+                "comments": true,
+                "strings": true,
+                "identifiers": true,
+                "lang": "en_US",
+                "skipWords": [
+                    "vscode",
+                    "typescript",
+                    "eslint",
+                    "plugin",
+                    "ecma",
+                    "node",
+                    "js",
+                    "ts"
+                ],
+                "skipIfMatch": [
+                    "http://[^s]*",
+                    "^[-\\w]+/[-\\w\\.]+$" // For MIME Types
+                ],
+                "minLength": 3
+            }
+        ]
+    }
+}
