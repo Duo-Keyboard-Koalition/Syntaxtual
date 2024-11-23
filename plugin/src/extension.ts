@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { insertDateTime } from './components/insertDateTime';
-import { printFirstTenChars } from './components/printFirstTenChars';
+import { printFirstTenChars } from './components/printChars';
 import { simulateApiCall } from './components/simulateApiCall';
 import { onFileChange, clearFileChangeTimeout } from './components/fileChange';
 import { highlight } from './components/highlight';
@@ -12,7 +12,9 @@ export function activate(context: vscode.ExtensionContext) {
     let printFirstTenCharsDisposable = vscode.commands.registerCommand('sample-date-inserter.printFirstTenChars', printFirstTenChars);
     let simulateApiCallDisposable = vscode.commands.registerCommand('sample-date-inserter.simulateApiCall', simulateApiCall);
     let fileChangeDisposable = vscode.workspace.onDidChangeTextDocument(onFileChange);
-    let highlightDisposable = vscode.commands.registerCommand('sample-date-inserter.highlight', highlight);
+    let highlightDisposable = vscode.commands.registerCommand('sample-date-inserter.highlight', () => {
+        highlight(0, 10, 'rgba(255, 255, 0, 0.3)', 'yellow');
+    });
 
     context.subscriptions.push(
         insertDateTimeDisposable,
