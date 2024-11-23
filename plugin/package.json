@@ -1,67 +1,78 @@
 {
-	"name": "sample-date-inserter",
-	"displayName": "Sample Date Inserter",
-	"description": "Insert current date and time, print first 10 characters of the file, and simulate API calls",
-	"version": "0.0.5",
-	"engines": {
-		"vscode": "^1.85.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "sample-date-inserter.insertDateTime",
-				"title": "Insert Date and Time"
-			},
-			{
-				"command": "sample-date-inserter.printFirstTenChars",
-				"title": "Print First 10 Characters"
-			},
-			{
-				"command": "sample-date-inserter.simulateApiCall",
-				"title": "Simulate API Call"
-			}
-		],
-		"keybindings": [
-			{
-				"command": "sample-date-inserter.insertDateTime",
-				"key": "ctrl+shift+i",
-				"mac": "cmd+shift+i"
-			},
-			{
-				"command": "sample-date-inserter.printFirstTenChars",
-				"key": "ctrl+shift+p",
-				"mac": "cmd+shift+p"
-			},
-			{
-				"command": "sample-date-inserter.simulateApiCall",
-				"key": "ctrl+shift+a",
-				"mac": "cmd+shift+a"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "vscode-test"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.85.0",
-		"@types/mocha": "^10.0.6",
-		"@types/node": "18.x",
-		"@typescript-eslint/eslint-plugin": "^6.15.0",
-		"@typescript-eslint/parser": "^6.15.0",
-		"eslint": "^8.56.0",
-		"typescript": "^5.3.3",
-		"@vscode/test-cli": "^0.0.4",
-		"@vscode/test-electron": "^2.3.8"
-	}
+    "name": "sample-date-inserter",
+    "displayName": "Sample Date Inserter",
+    "description": "Insert current date and time, print first 10 characters of the file, and simulate API calls",
+    "version": "0.0.5",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:sample-date-inserter.highlight"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "sample-date-inserter.insertDateTime",
+                "title": "Insert Date and Time"
+            },
+            {
+                "command": "sample-date-inserter.printFirstTenChars",
+                "title": "Print First 10 Characters"
+            },
+            {
+                "command": "sample-date-inserter.simulateApiCall",
+                "title": "Simulate API Call"
+            },
+            {
+                "command": "sample-date-inserter.highlight",
+                "title": "Highlight First 10 Characters"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "sample-date-inserter.insertDateTime",
+                "key": "ctrl+shift+i",
+                "mac": "cmd+shift+i"
+            },
+            {
+                "command": "sample-date-inserter.printFirstTenChars",
+                "key": "ctrl+shift+p",
+                "mac": "cmd+shift+p"
+            },
+            {
+                "command": "sample-date-inserter.simulateApiCall",
+                "key": "ctrl+shift+a",
+                "mac": "cmd+shift+a"
+            },
+            {
+                "command": "sample-date-inserter.highlight",
+                "key": "ctrl+shift+h",
+                "mac": "cmd+shift+h"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.85.0",
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@typescript-eslint/eslint-plugin": "^6.21.0",
+        "@typescript-eslint/parser": "^6.21.0",
+        "eslint": "^8.57.1",
+        "eslint-plugin-spellcheck": "^0.0.20",
+        "typescript": "^5.3.3",
+        "@vscode/test-cli": "^0.0.4",
+        "@vscode/test-electron": "^2.3.8"
+    }
 }
-
