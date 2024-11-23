@@ -1,0 +1,126 @@
+{
+  "file_description": {
+    "summary": "This file contains:",
+    "components": [
+      "A Calculator class for A Calculator class with properties implementing __init__, version, add",
+      "A global variable API_VERSION",
+      "A global variable DEBUG_MODE",
+      "A function __init__ that \n    The function `__init__` is a constructor method in Python that initializes an instance of a class. It takes an optional parameter `precision` which specifies the number of decimal places to round the result to. The default value of `precision` is 2, meaning the result will be rounded to two decimal places.",
+      "A function version that \"Version: 1.0\"",
+      "A function add that \"Returns the sum of two numbers, rounded to the specified precision.\"\n    \nThis function takes two parameters, `a` and `b`, and returns the sum of these two numbers. It also allows for an optional second parameter `b` to be passed in, which defaults to 0.0. The function then rounds the result to the specified precision.",
+      "A global variable results",
+      "A global variable result",
+      "A global variable chunk"
+    ]
+  },
+  "classes": [
+    {
+      "name": "Calculator",
+      "responsibility": "A Calculator class with properties implementing __init__, version, add",
+      "docstring": "A simple calculator class.",
+      "methods": [
+        {
+          "name": "__init__",
+          "purpose": "\n    The function `__init__` is a constructor method in Python that initializes an instance of a class. It takes an optional parameter `precision` which specifies the number of decimal places to round the result to. The default value of `precision` is 2, meaning the result will be rounded to two decimal places.",
+          "signature": "__init__(self, precision: int)",
+          "docstring": "Initialize calculator with given precision.",
+          "body": "  \"\"\"Initialize calculator with given precision.\"\"\"\n  self.precision = precision",
+          "decorators": "",
+          "return_type": "None",
+          "is_method": true,
+          "class_name": "Calculator"
+        },
+        {
+          "name": "version",
+          "purpose": "\"Version: 1.0\"",
+          "signature": "version(self)",
+          "docstring": "Get calculator version.",
+          "body": "  \"\"\"Get calculator version.\"\"\"\n  return \"1.0\"",
+          "decorators": "@property",
+          "return_type": "str",
+          "is_method": true,
+          "class_name": "Calculator"
+        },
+        {
+          "name": "add",
+          "purpose": "\"Returns the sum of two numbers, rounded to the specified precision.\"\n    \nThis function takes two parameters, `a` and `b`, and returns the sum of these two numbers. It also allows for an optional second parameter `b` to be passed in, which defaults to 0.0. The function then rounds the result to the specified precision.",
+          "signature": "add(self, a: float, b: float)",
+          "docstring": "Add two numbers.",
+          "body": "  \"\"\"Add two numbers.\"\"\"\n  result = a + b\n  return round(result, self.precision)",
+          "decorators": "",
+          "return_type": "float",
+          "is_method": true,
+          "class_name": "Calculator"
+        }
+      ],
+      "inheritance": "",
+      "decorators": "@dataclass"
+    }
+  ],
+  "functions": [
+    {
+      "name": "__init__",
+      "purpose": "\n    The function `__init__` is a constructor method in Python that initializes an instance of a class. It takes an optional parameter `precision` which specifies the number of decimal places to round the result to. The default value of `precision` is 2, meaning the result will be rounded to two decimal places.",
+      "signature": "__init__(self, precision: int)",
+      "docstring": "Initialize calculator with given precision.",
+      "body": "  \"\"\"Initialize calculator with given precision.\"\"\"\n  self.precision = precision",
+      "decorators": "",
+      "return_type": "None",
+      "is_method": false,
+      "class_name": null
+    },
+    {
+      "name": "version",
+      "purpose": "\"Version: 1.0\"",
+      "signature": "version(self)",
+      "docstring": "Get calculator version.",
+      "body": "  \"\"\"Get calculator version.\"\"\"\n  return \"1.0\"",
+      "decorators": "@property",
+      "return_type": "str",
+      "is_method": false,
+      "class_name": null
+    },
+    {
+      "name": "add",
+      "purpose": "\"Returns the sum of two numbers, rounded to the specified precision.\"\n    \nThis function takes two parameters, `a` and `b`, and returns the sum of these two numbers. It also allows for an optional second parameter `b` to be passed in, which defaults to 0.0. The function then rounds the result to the specified precision.",
+      "signature": "add(self, a: float, b: float)",
+      "docstring": "Add two numbers.",
+      "body": "  \"\"\"Add two numbers.\"\"\"\n  result = a + b\n  return round(result, self.precision)",
+      "decorators": "",
+      "return_type": "float",
+      "is_method": false,
+      "class_name": null
+    }
+  ],
+  "variables": [
+    {
+      "name": "API_VERSION",
+      "value": "'1.0'",
+      "purpose": "Global API_VERSION set to '1.0'"
+    },
+    {
+      "name": "DEBUG_MODE",
+      "value": "True",
+      "purpose": "Global DEBUG_MODE set to True"
+    },
+    {
+      "name": "results",
+      "value": "[]",
+      "purpose": "Global results set to []"
+    },
+    {
+      "name": "result",
+      "value": "a + b",
+      "purpose": "Global result set to a + b"
+    },
+    {
+      "name": "chunk",
+      "value": "items[i:i + chunk_size]",
+      "purpose": "Global chunk set to items[i:i + chunk_size]"
+    }
+  ],
+  "relationships": [
+    "Class Calculator contains methods: __init__, version, add",
+    "Function add uses global variables: result"
+  ]
+}
