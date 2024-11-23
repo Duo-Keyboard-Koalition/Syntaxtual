@@ -6,6 +6,10 @@ from intelligence import Summarizer, Categorizer, LanguageAgent, SummarizerConfi
 
 from purpose import SmartPurposeGenerator, CodePattern
 
+from transformers import pipeline
+import ast
+import re
+
 @dataclass
 class Function:
   name: str
@@ -32,6 +36,40 @@ class CodeParser:
     self.code = code
     self.tree = ast.parse(code)
     self.code_lines = code.split('\n')
+  
+  summarizer = pipeline(
+    model="Qwen/Qwen2.5-0.5B",
+    device=-1  # CPU
+  )
+    
+  @classmethod
+  def _summarize_python_function(cls, function_string: str) -> dict:
+    """
+    Analyzes a Python function string and returns a summary using a small language model.
+    
+    Args:
+      function_string (str): String containing a Python function definition
+      
+    Returns:
+      dict: Summary information including function name, parameters, docstring,
+        and an AI-generated summary of functionality
+    """
+    # Initialize the summarization model
+    
+    
+    # Clean the code for better summarization
+    clean_code = re.sub(r'""".*?"""', '', function_string, flags=re.DOTALL)  # Remove docstring
+    clean_code = re.sub(r'#.*$', '', clean_code, flags=re.MULTILINE)  # Remove comments
+    prompt = f"You are given a function. Summarize it in one line. The function {clean_code} can be summarized as:"
+    # Generate AI summary
+    summary = cls.summarizer(
+      prompt,
+    )[0]
+
+    summary = summary["generated_text"].split("can be summarized as: ")[1]
+    
+    return summary
+    
   
   def _get_source_segment(self, node: ast.AST, body_only: bool = False) -> str:
     """Extract clean source code."""
@@ -74,10 +112,9 @@ class CodeParser:
 
     function_body = self._get_source_segment(node)
 
-    generator = SmartPurposeGenerator(use_local_model=True)
-    purpose = generator.generate_purpose(node)
-  
-    
+    print("FUNCTION::")
+    purpose = CodeParser._summarize_python_function(function_body)
+    print(purpose)
     return f"{purpose}"
 
   def _parse_function(self, node: ast.FunctionDef, class_context: Optional[str] = None) -> Function:
